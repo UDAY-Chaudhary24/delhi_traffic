@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delhi Mobility Assistant</title>
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+      color: white;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+    .form-card, .result-card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 2px solid #e0e0e0;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    #map {
+      height: 500px;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .form-map-wrapper {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 968px) {
+      .form-map-wrapper {
+        grid-template-columns: 1fr;
+      }
+      #map {
+        height: 400px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <h1>Delhi Mobility Assistant</h1>
+  </header>
+
+  <main class="container">
+    <div class="form-map-wrapper">
+      <div class="form-card">
+        <label>
+          Start Location
+          <select id="start">
+            <option value="">Select start location</option>
+          </select>
+        </label>
+
+        <label>
+          Destination
+          <select id="end">
+            <option value="">Select destination</option>
+          </select>
+        </label>
+
+        <label>
+          Preference
+          <select id="preference">
+            <option value="cheaper">Cheaper Route</option>
+            <option value="safer">Safer Route</option>
+          </select>
+        </label>
+
+        <button id="findRoute">Find Route</button>
+      </div>
+
+      <div id="map"></div>
+    </div>
+
+    <div class="result-card" id="result" style="display:none;">
+      <h2>Suggested Route</h2>
+      <ul id="routeList"></ul>
+      <p id="reason"></p>
+    </div>
+  </main>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+
+  <!-- PapaParse -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+  <!-- YOUR APP LOGIC -->
+  <script src="app.js"></script>
+</body>
+</html>

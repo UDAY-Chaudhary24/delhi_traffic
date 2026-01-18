@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+
+.form-card,
+.result-card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.result-card {
+  display: none;
+}
+
+.reason {
+  margin-top: 10px;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+}
+#map {
+  height: 400px;
+  width: 100%;
+  border-radius: 8px;
+}
+.form-map-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* small space between form and map */
+  margin-bottom: 20px;
+}
